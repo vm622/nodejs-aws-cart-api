@@ -13,6 +13,7 @@ export type Product = {
 
 export type CartItem = {
   product: Product,
+  product_id: string,
   count: number,
 }
 
