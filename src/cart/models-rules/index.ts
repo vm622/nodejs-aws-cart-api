@@ -5,7 +5,11 @@ import { Cart, CartItem } from '../models';
  * @returns {number}
  */
 export function calculateCartTotal(cart: Cart): number {
-  return cart ? cart.items.reduce((acc: number, { product: { price }, count }: CartItem) => {
-    return acc += price * count;
-  }, 0) : 0;
+  if (cart && cart.items && cart.items.length > 0) {
+    return cart.items.reduce((acc: number, { product: { price }, count }: CartItem) => {
+      return acc += price * count;
+    }, 0);
+  } else {
+    return 0;
+  }
 }
