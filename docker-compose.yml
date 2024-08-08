@@ -1,0 +1,31 @@
+name: vm622-cart-api
+services:
+  postgresdb:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - $DB_PORT:$DB_PORT
+    volumes:
+      - db:/var/lib/postgres
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    depends_on:
+      - postgresdb
+    image: vm622-cart-api-image
+    environment:
+      - DB_HOST=postgresdb
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "4000:4000"
+    links:
+      - postgresdb
+
+volumes: 
+  db:
