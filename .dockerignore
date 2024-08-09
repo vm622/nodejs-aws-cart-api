@@ -1,0 +1,17 @@
+# Exclude build files
+dist
+
+# Ignore node_modules to reduce image size
+node_modules
+
+# Ignore test files 
+test
+
+# Ignore environment files
+.env
+
+# Ignore .git files
+.git
+
+# Ignore Elastic Beanstalk configuration
+.elasticbeanstalk

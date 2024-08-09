@@ -8,14 +8,12 @@ export class CartService {
 
   constructor() {    
     this.pool = new Pool({
-      host: process.env.RDS_HOST,
-      port: process.env.RDS_PORT,
-      database: process.env.RDS_DB,
-      user: process.env.RDS_USERNAME,
-      password: process.env.RDS_PASSWORD,
-      ssl: {
-        rejectUnauthorized: false,
-      },
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      database: process.env.DB_NAME,
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      ssl: false
   });
   }
 
